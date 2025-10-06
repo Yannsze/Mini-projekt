@@ -13,12 +13,15 @@ void menu_init(menu_state_t* state) {
 
 // Uppdatera meny baserat på toggles och knapp
 // toggles[0-1]=kernel, toggles[2]=size, toggles[3]=run_mode, btn=action
+
 void menu_update(menu_state_t* state, int toggles, int btn) {
     // Kernelval: toggles 0-1 (två bitar)
     state->kernel_selected = (kernel_type_t)(toggles & 0x3);
 
     // Kernelstorlek: toggle 2 (0=3x3, 1=5x5)
-    state->kernel_size = (toggles & 0x4) ? 5 : 3;
+    state->kernel_size = (toggles & 0x4) ? 5 : 3;   // (toggles & 0x4) ? 5 : 3; betyder: 
+                                                    // Om toggle 2 värde är satt till 1, dvs nedtryckt, så blir kernel_size 5.
+                                                    // Om toggle 2 värde är satt till 0, dvs INTE nedtryckt, så blir kernel_size 3.
 
     // Run mode: toggle 3 (0=single, 1=chain)
     state->run_mode = (toggles & 0x8) ? 1 : 0;
