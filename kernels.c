@@ -1,3 +1,4 @@
+// kernels.c
 #include "kernels.h"
 
 // (3x3) och (5x5) områden
