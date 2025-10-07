@@ -132,6 +132,16 @@ int main ( void ) {
     // 3. Kör vald kernel på bilddata
     // 4. Hantera upload/download/reset
 
+    printf("=== Welcome to the DTEK Image Processor ===");
+    printf("Use the toggles to select kernel and options.");
+    printf("[1:0] Kernel: 00=Edge, 01=Boxblur, 10=Gaussian, 11=Sharpen");
+    printf("[2] Kernel Size: 0=3x3, 1=5x5");
+    printf("[3] Run Mode: 0=Single, 1=Chain");
+    printf("[4] Hold for Upload");
+    printf("[5] Hold for Download");
+    printf("[6] Hold for Reset");
+    printf("Press button to confirm actions.");
+
     int toggles = get_sw();
     int btn = get_btn();
     menu_update(&menu, toggles, btn);
