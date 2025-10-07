@@ -26,6 +26,7 @@ int prime = 1234567;
 
 #define toggle_reg (*(volatile unsigned int *) 0x04000010)
 #define toggle_regOffset (*(volatile unsigned int *) 0x04000018)
+#define btn_reg (*(volatile unsigned int *) 0x040000d0)
 
 void set_leds(int led_mask);
 void set_displays(int display_number, int value);
@@ -69,6 +70,7 @@ void set_leds(int led_mask) {
   *led_reg = led_mask & 0x3FF;                                
 }
 
+// might not be needed - if we are not using the displays
 void set_displays(int display_number, int value) {
   int offset = 0x10;
 
@@ -105,8 +107,7 @@ int get_sw(void) {
 
 // get status of the second button
 int get_btn(void) {
-  volatile unsigned int *btn_reg = (volatile unsigned int *) 0x040000d0;
-  return *btn_reg & 0x1;
+  return btn_reg & 0x1;
 }
 
 //Huvudloopen. Meny och bildbehandling
