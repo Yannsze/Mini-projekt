@@ -5,6 +5,13 @@
 /* Below functions are external and found in other files. */
 
 #include "menu.h"
+#include "kernels.h"
+
+#define IMG_WIDTH 64
+#define IMG_HEIGHT 64
+
+unsigned char input_img[IMG_WIDTH * IMG_HEIGHT];
+unsigned char output_img[IMG_WIDTH * IMG_HEIGHT];
 
 extern void print(const char*);
 extern void print_dec(unsigned int);
